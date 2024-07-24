@@ -8,6 +8,7 @@ from .bahn_v2 import BahnV2PullConverter
 from .base_converter import BaseConverter
 from .bfrk_bw import BfrkBwOepnvBikePushConverter, BfrkBwOepnvCarPushConverter, BfrkBwSpnvBikePushConverter, BfrkBwSpnvCarPushConverter
 from .bietigheim_bissingen import BietigheimBissingenPullConverter
+from .dummy_bike import DummyBikePushConverter
 from .ellwangen import EllwangenPushConverter
 from .freiburg import FreiburgPullConverter
 from .goldbeck import GoldbeckPushConverter
