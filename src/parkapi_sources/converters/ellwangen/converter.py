@@ -49,5 +49,4 @@ class EllwangenPushConverter(NormalizedXlsxConverter):
         parking_site_dict['type'] = self.type_mapping.get(parking_site_dict.get('type'))
         parking_site_dict['static_data_updated_at'] = datetime.now(tz=timezone.utc).isoformat()
 
-        print(parking_site_dict)
         return parking_site_dict
