@@ -10,19 +10,23 @@ Konstanz provides a GeoJSON with Point geometry, which results in ParkingSpots.
 
 ## Properties
 
-| field       | type            | Cardinality | Target field | Comment                          |
-|-------------|-----------------|-------------|--------------|----------------------------------|
-| OBJECTID    | integer         | 1           | uid          |                                  |
-| Name        | string          | 1           | name         | name set to "`Name`-`Stadtteil`" |
-| adress      | string          | 1           | address      |                                  |
-| Stadteil    | string          | 1           | name         |Mapped to Name                    |
-| type        | ParkingSpotType | 1           | type         |                                  |
-| Anordnung   | string          | 1           |              |                                  |
-| Breite      | string          | 1           |              |                                  |
-| description | string          | ?           | description  | Set if present                   |
-| GlobalID    | string          | 1           |              |                                  |
+| field       | type                                | Cardinality | Target field | Comment                          |
+|-------------|-------------------------------------|-------------|--------------|----------------------------------|
+| OBJECTID    | integer                             | 1           | uid          |                                  |
+| Name        | string                              | 1           | name         | name set to "`Name`-`Stadtteil`" |
+| adress      | string                              | 1           | address      |                                  |
+| Stadteil    | string                              | 1           | name         | Mapped to Name                   |
+| type        | [ParkingSpotType](#ParkingSpotType) | 1           | type         |                                  |
+| Anordnung   | string                              | 1           |              |                                  |
+| Breite      | string                              | 1           |              |                                  |
+| description | string                              | ?           | description  | Set if present                   |
+| GlobalID    | string                              | 1           |              |                                  |
 
 
 ## ParkingSpotType
-* ON_STREET
-* OFF_STREET_PARKING_GROUND
+
+| Key                      | Mapping: type             |
+| ------------------------ | ------------------------- |
+| OFF_STREET_PARKING_GROUND| OFF_STREET_PARKING_GROUND |
+| ON_STREET                | ON_STREET                 |
+
