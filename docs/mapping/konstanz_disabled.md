@@ -10,17 +10,18 @@ Konstanz provides a GeoJSON with Point geometry, which results in ParkingSpots.
 
 ## Properties
 
-| field       | type                                | Cardinality | Target field | Comment                          |
-|-------------|-------------------------------------|-------------|--------------|----------------------------------|
-| OBJECTID    | integer                             | 1           | uid          |                                  |
-| Name        | string                              | 1           | name         | name set to "`Name`-`Stadtteil`" |
-| adress      | string                              | 1           | address      |                                  |
-| Stadteil    | string                              | 1           | name         | Mapped to Name                   |
-| type        | [ParkingSpotType](#ParkingSpotType) | 1           | type         |                                  |
-| Anordnung   | string                              | 1           |              |                                  |
-| Breite      | string                              | 1           |              |                                  |
-| description | string                              | ?           | description  | Set if present                   |
-| GlobalID    | string                              | 1           |              |                                  |
+| field        | type                                | Cardinality | Target field | Comment                          |
+|--------------|-------------------------------------|-------------|--------------|----------------------------------|
+| OBJECTID     | integer                             | 1           | uid          |                                  |
+| Name         | string                              | 1           | name         | name set to "`Name`-`Stadtteil`" |
+| Straßennummer| string                              | 1           |              |                                  |
+| adress       | string                              | 1           | address      |                                  |
+| Stadtteil    | string                              | 1           | name         | mapped to Name                   |
+| type         | [ParkingSpotType](#ParkingSpotType) | 1           | type         |                                  |
+| Anordnung    | string                              | 1           |              |                                  |
+| Breite       | string                              | 1           |              |                                  |
+| description  | string                              | ?           | description  | set if present                   |
+| GlobalID     | string                              | 1           |              |                                  |
 
 
 ## ParkingSpotType
