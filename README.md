@@ -23,6 +23,7 @@ We support following data sources:
 | Stadt Buchen                                                          | ParkingSite | car        | push (json) | `buchen`                      | yes      |
 | Stadt Ellwangen                                                       | ParkingSite | car        | push (xlsx) | `ellwangen`                   | no       |
 | Stadt Ellwangen: Sensit                                               | ParkingSite | car        | pull        | `ellwangen_sensit`            | yes      |
+| Stadt Esslingen                                                       | ParkingSite | car        | push        | `esslingen`                   | no       |
 | Stadt Freiburg                                                        | ParkingSite | car        | pull        | `freiburg`                    | yes      |
 | Stadt Freiburg: Statische Behindertenparkplätze                       | ParkingSpot | car        | pull        | `freiburg_disabled_static`    | no       |
 | Stadt Freiburg: Behindertenparkplätze mit Sensoren                    | ParkingSpot | car        | pull        | `freiburg_disabled_sensors`   | yes      |
