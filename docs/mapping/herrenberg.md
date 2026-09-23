@@ -31,7 +31,7 @@ Before validation, source keys containing `:` are normalized by replacing `:` wi
 | lots[].url                | URL                     | ?           | public_url                        |                                                                          |
 | lots[].opening_hours      | string                  | ?           | opening_hours                     | OSM opening times. `Mo - Su` is normalized to `Mo-Su`.                   |
 | lots[].fee_hours          | string                  | ?           | has_fee, fee_description          | `has_fee` is set to `true` if `fee_hours` is present, otherwise `false`. |
-| lots[].state              | [LotsState](#LotsState) | ?           | has_realtime_data                 | `false` if `state == nodata`, otherwise `true`.                          |
+| lots[].state              | [LotsState](#LotsState) | ?           | has_realtime_data                 | `false` if `state == nodata` or `state == unknown`, otherwise `true`.    |
 | last_updated              | datetime                | 1           | static_data_updated_at            | Converted to UTC.                                                        |
 
 ## Static `ParkingSpot`
@@ -49,12 +49,12 @@ Before validation, source keys containing `:` are normalized by replacing `:` wi
 | lots[].url                | URL                     | ?           | public_url                        |                                                                          |
 | lots[].opening_hours      | string                  | ?           | opening_hours                     | OSM opening times. `Mo - Su` is normalized to `Mo-Su`.                   |
 | lots[].fee_hours          | string                  | ?           | has_fee, fee_description          | `has_fee` is set to `true` if `fee_hours` is present, otherwise `false`. |
-| lots[].state              | [LotsState](#LotsState) | ?           | has_realtime_data                 | `false` if `state == nodata`, otherwise `true`.                          |
+| lots[].state              | [LotsState](#LotsState) | ?           | has_realtime_data                 | `false` if `state == nodata` or `state == unknown`, otherwise `true`.    |
 | last_updated              | datetime                | 1           | static_data_updated_at            | Converted to UTC.                                                        |
 
 ## Realtime `ParkingSite`
 
-Realtime `ParkingSite` data is generated for entries where `state != nodata`.
+Realtime `ParkingSite` data is generated for entries where `state != nodata` or `state == unknown`.
 
 | field        | Type                    | Cardinality | Target field             | Comment                                               |
 | ------------ | ----------------------- | ----------- | ------------------------ | ----------------------------------------------------- |
