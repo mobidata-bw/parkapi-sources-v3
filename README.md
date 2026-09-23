@@ -278,7 +278,7 @@ We always welcome merge requests with new converters. A merge request should con
 ## Write a new converter
 
 First you have to determine which type of converter you need. If you get the data from an endpoint, you will need a
-`PushConverter`, if you have a file you want to push via HTTP or CLI, you need a `PullConverter`.
+`PullConverter`, if you have a file you want to push via HTTP or CLI, you need a `PushConverter`.
 
 
 ### Write the converter
