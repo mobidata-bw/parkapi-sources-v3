@@ -18,16 +18,23 @@ Konstanz provides a GeoJSON with Point geometry, which results in ParkingSpots.
 | adress       | string                              | 1           | address      |                                  |
 | Stadtteil    | string                              | 1           | name         | mapped to Name                   |
 | type         | [ParkingSpotType](#ParkingSpotType) | 1           | type         |                                  |
-| Anordnung    | string                              | 1           |              |                                  |
+| Anordnung    | [Anordnung](#Anordnung)             | 1           | orientation  |                                  |
 | Breite       | string                              | 1           |              |                                  |
 | description  | string                              | ?           | description  | set if present                   |
 | GlobalID     | string                              | 1           |              |                                  |
 
 
-## ParkingSpotType
+### ParkingSpotType
 
 | Key                      | Mapping: type             |
 | ------------------------ | ------------------------- |
 | OFF_STREET_PARKING_GROUND| OFF_STREET_PARKING_GROUND |
 | ON_STREET                | ON_STREET                 |
 
+### Anordnung
+
+| Key         | Mapping       |
+|-------------|---------------|
+| längs       | PARALLEL      |
+| quer        | PERPENDICULAR |
+| schräg      | DIAGONAL      |
