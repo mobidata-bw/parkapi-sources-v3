@@ -20,8 +20,8 @@ class KonstanzDisabledPullConverter(ParkingSpotPullConverter):
     source_info = SourceInfo(
         uid='konstanz_disabled',
         name='Stadt Konstanz: Behindertenparkplätze',
-        source_url='https://services-eu1.arcgis.com/cgMeYTGtzFtnxdsx/arcgis/rest/services/POI_Verkehr/FeatureServer'
-        '/5/query?outFields=*&where=1%3D1&f=geojson',
+        source_url='https://services-eu1.arcgis.com/cgMeYTGtzFtnxdsx/arcgis/rest/services/Verkehr/FeatureServer'
+            '/1/query?outFields=*&where=1%3D1&f=geojson',
         has_realtime_data=False,
     )
 
