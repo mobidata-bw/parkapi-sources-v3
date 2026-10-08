@@ -36,7 +36,7 @@ class KonstanzDisabledConverterTest:
             json_data = json_file.read()
 
         requests_mock.get(
-            'https://services-eu1.arcgis.com/cgMeYTGtzFtnxdsx/arcgis/rest/services/POI_Verkehr/FeatureServer/5'
+            'https://services-eu1.arcgis.com/cgMeYTGtzFtnxdsx/arcgis/rest/services/Verkehr/FeatureServer/1'
             '/query?outFields=*&where=1%3D1&f=geojson',
             text=json_data,
         )

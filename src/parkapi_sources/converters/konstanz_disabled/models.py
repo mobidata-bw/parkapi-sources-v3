@@ -19,7 +19,7 @@ from parkapi_sources.models import (
     PurposeType,
     StaticParkingSpotInput,
 )
-from parkapi_sources.models.enums import ParkingSiteOrientation, ParkingSpotType
+from parkapi_sources.models.enums import ParkingOrientation, ParkingSpotType
 from parkapi_sources.util import generate_point, round_7d
 from parkapi_sources.validators import GeoJSONGeometryValidator
 
@@ -56,12 +56,11 @@ class Orientierung(Enum):
     PERPENDICULAR = 'quer'
     DIAGONAL = 'schräg'
 
-    # TODO: Should be ParkingSpotTypeOrientation, but first check whether it works like this and whether the datamodel adaption should be implemented separately
-    def to_parking_site_orientation_type(self) -> ParkingSiteOrientation:
+    def to_parking_site_orientation_type(self) -> ParkingOrientation:
         return {
-            self.PARALLEL: ParkingSiteOrientation.PARALLEL,
-            self.PERPENDICULAR: ParkingSiteOrientation.PERPENDICULAR,
-            self.DIAGONAL: ParkingSiteOrientation.DIAGONAL,
+            self.PARALLEL: ParkingOrientation.PARALLEL,
+            self.PERPENDICULAR: ParkingOrientation.PERPENDICULAR,
+            self.DIAGONAL: ParkingOrientation.DIAGONAL,
         }.get(self)
 
 @validataclass
@@ -82,28 +81,15 @@ class KonstanzDisabledFeatureInput(GeojsonBaseFeatureInput):
     geometry: Point = GeoJSONGeometryValidator(allowed_geometry_types=[GeometryType.POINT])
 
     def to_static_parking_spot_inputs(self) -> list[StaticParkingSpotInput]:
-        static_parking_spot_inputs = []
-        for i in range(self.properties.Informatio):
-            lat, lon = generate_point(
-                lat=round_7d(self.geometry.y),
-                lon=round_7d(self.geometry.x),
-                number=i,
-                max_number=self.properties.Informatio,
-            )
-
-            static_parking_spot_inputs.append(
-                StaticParkingSpotInput(
+        return [StaticParkingSpotInput(
                     uid=f'{self.properties.GlobalID}',
                     name=f'{self.properties.Name}-{self.properties.Stadtteil}',
                     purpose=PurposeType.CAR,
-                    address=self.properties.adress
+                    address=self.properties.adress,
                     description=self.properties.description,
                     static_data_updated_at=datetime.now(tz=timezone.utc),
-                    lat=lat,
-                    lon=lon,
+                    lat=self.geometry.y,
+                    lon=self.geometry.x,
                     has_realtime_data=False,
                     restrictions=[ParkingSpotRestrictionInput(type=ParkingAudience.DISABLED)],
-                ),
-            )
-
-        return static_parking_spot_inputs
+                )]
