@@ -10,7 +10,7 @@ from typing import Any
 from shapely import GeometryType, Point
 from validataclass.dataclasses import validataclass
 from validataclass.exceptions import ValidationError
-from validataclass.validators import DataclassValidator, EnumValidator, IntegerValidator, StringValidator
+from validataclass.validators import DataclassValidator, EnumValidator, IntegerValidator, Noneable, StringValidator
 
 from parkapi_sources.models import (
     GeojsonBaseFeatureInput,
@@ -71,7 +71,7 @@ class KonstanzDisabledPropertiesInput:
     Stadtteil: str = StringValidator()
     type: KonstanzDisabledParkingSpotTypeInput = EnumValidator(KonstanzDisabledParkingSpotTypeInput)
     Anordnung: Orientierung = EnumValidator(Orientierung)
-    description: str = StringValidator()
+    description: str | None = Noneable(StringValidator())
     GlobalID: str = StringValidator()
 
 

@@ -55,7 +55,7 @@ class KonstanzDisabledConverterTest:
                 },
             })
 
-        assert len(static_parking_spot_inputs) == 97
+        assert len(static_parking_spot_inputs) == 106
         assert len(import_parking_spot_exceptions) == 0
 
         validate_static_parking_spot_inputs(static_parking_spot_inputs)
