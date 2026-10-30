@@ -7,11 +7,11 @@ from validataclass.validators import DataclassValidator
 
 from parkapi_sources.models import SourceInfo
 
-from .base_converter import BfrkBasePushConverter
+from .base_converter import BfrkBasePullConverter
 from .bike_models import BfrkBikeInput
 
 
-class BfrkBwBikePushConverter(BfrkBasePushConverter):
+class BfrkBwBikePullConverter(BfrkBasePullConverter):
     bfrk_validator = DataclassValidator(BfrkBikeInput)
     source_url_config_key = 'PARK_API_BFRK_BW_BIKE_OVERRIDE_SOURCE_URL'
 
@@ -20,8 +20,17 @@ class BfrkBwBikePushConverter(BfrkBasePushConverter):
         name='Barrierefreie Reisekette Baden-Württemberg: Fahrrad-Parkplätze',
         public_url='https://www.mobidata-bw.de/dataset/bfrk-barrierefreiheit-an-bw-haltestellen',
         source_url='https://bfrk-kat-api.efa-bw.de/bfrk_api/fahrradanlagen',
+        attribution_contributor='Nahverkehrsgesellschaft Baden-Württemberg mbH (NVBW)',
+        attribution_license='Datenlizenz Deutschland – Namensnennung – Version 2.0',
+        attribution_url='https://www.govdata.de/dl-de/by-2-0',
         has_realtime_data=False,
     )
+
+    def check_ignore_input_dict(self, input_dict: dict) -> bool:
+        if self.config_helper.get('PARK_API_BFRK_BW_BIKE_IGNORE_MISSING_CAPACITIES', True) is False:
+            return False
+
+        return input_dict.get('stellplatzanzahl') is None
 
     def check_ignore_item(self, input_data: BfrkBikeInput) -> bool:
         if input_data.stellplatzanzahl == 0:
